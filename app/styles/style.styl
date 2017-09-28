@@ -1,3 +1,54 @@
+primary-color = #3F61EA
+secondary-color = #CCCCBC
+text-color = #FFFFFF
+text-gray-color = #667980
+text-dark-color = #1A272F
+
 *
   margin: 0
   padding: 0
+
+body
+  background-color: secondary-color
+  color: text-color
+
+p
+  font-size: 1.6em
+  line-height: 1.8
+  color: text-gray-color
+
+a
+  color: primary-color
+  text-decoration: none
+a:hover
+  color: primary-color
+  text-decoration: underline
+
+h1
+  font-size: 5.5em
+  letter-spacing: 1px
+  font-weight: bold
+  color: text-color
+
+h2
+  margin-bottom: 0.75em
+  font-size: 3.25em
+  color: text-dark-color
+
+.row
+  padding-top: 6.5em
+  padding-bottom: 6.5em
+
+.hero
+  background-color: primary-color
+  p
+    color: secondary-color
+
+.about
+  background-color: text-color
+
+
+.contact
+  background-color: secondary-color
+  p
+    color: white
