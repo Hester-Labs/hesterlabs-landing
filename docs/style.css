@@ -13,6 +13,7 @@ p {
 }
 a {
   color: #3f61ea;
+  font-weight: bold;
   text-decoration: none;
 }
 a:hover {
@@ -21,13 +22,16 @@ a:hover {
 }
 h1 {
   font-size: 5.5em;
-  letter-spacing: 1px;
+  margin-bottom: 1.5em;
+  letter-spacing: 3px;
   font-weight: bold;
   color: #fff;
 }
 h2 {
   margin-bottom: 0.75em;
-  font-size: 3.25em;
+  font-size: 3.75em;
+  font-weight: bold;
+  letter-spacing: 1px;
   color: #1a272f;
 }
 .row {
