@@ -34,5 +34,8 @@ module.exports = {
     npm: {
         compilers: ['babel-brunch']
     },
-    sourceMaps: 'absoluteUrl'
+    sourceMaps: 'absoluteUrl',
+    paths: {
+        public: 'docs'
+    }
 }
