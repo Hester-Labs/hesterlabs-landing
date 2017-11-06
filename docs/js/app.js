@@ -1,13 +1,13 @@
 (function() {
   'use strict';
 
-  var globals = typeof global === 'undefined' ? self : global;
+  var globals = typeof window === 'undefined' ? global : window;
   if (typeof globals.require === 'function') return;
 
   var modules = {};
   var cache = {};
   var aliases = {};
-  var has = {}.hasOwnProperty;
+  var has = ({}).hasOwnProperty;
 
   var expRe = /^\.\.?(\/|$)/;
   var expand = function(root, name) {
@@ -36,7 +36,8 @@
   };
 
   var initModule = function(name, definition) {
-    var hot = hmr && hmr.createHot(name);
+    var hot = null;
+    hot = hmr && hmr.createHot(name);
     var module = {id: name, exports: {}, hot: hot};
     cache[name] = module;
     definition(module.exports, localRequire(name), module);
@@ -84,7 +85,7 @@
   };
 
   require.register = require.define = function(bundle, fn) {
-    if (bundle && typeof bundle === 'object') {
+    if (typeof bundle === 'object') {
       for (var key in bundle) {
         if (has.call(bundle, key)) {
           require.register(key, bundle[key]);
@@ -115,7 +116,7 @@
 })();
 
 (function() {
-var global = typeof window === 'undefined' ? this : window;
+var global = window;
 var __makeRelativeRequire = function(require, mappings, pref) {
   var none = {};
   var tryReq = function(name, pref) {
@@ -153,7 +154,6 @@ require.register("initialize.js", function(exports, require, module) {
 document.addEventListener('DOMContentLoaded', function () {
   // do your setup here
 });
-
 });
 
 require.register("js/main.js", function(exports, require, module) {
@@ -162,7 +162,6 @@ require.register("js/main.js", function(exports, require, module) {
 //Add something to module.exports
 //Require it from HTML as `var main = require(`js/main.js`)`
 //Require it from another JS script as `var main = require(`./main.js`)`
-
 });
 
 ;require.register("___globals___", function(exports, require, module) {
@@ -178,8 +177,7 @@ require.register("js/main.js", function(exports, require, module) {
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(bs, s);
 })();
-
-"use strict";
+;"use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
@@ -453,6 +451,5 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       };
     }, { "fs": 2 }], 2: [function (require, module, exports) {}, {}] }, {}, [1])(1);
 });
-
 
 //# sourceMappingURL=/js/app.js.map
