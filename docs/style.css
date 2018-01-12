@@ -3,7 +3,7 @@
   padding: 0;
 }
 body {
-  background-color: #ccccbc;
+  background-color: #fff;
   color: #fff;
 }
 p {
@@ -45,16 +45,13 @@ h2 {
   background-color: #3f61ea;
 }
 .hero p {
-  color: #ccccbc;
+  color: #fff;
 }
 .about {
   background-color: #fff;
 }
 .contact {
-  background-color: #ccccbc;
-}
-.contact p {
-  color: #fff;
+  background-color: #fff;
 }
 
 
