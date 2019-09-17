@@ -148,16 +148,14 @@ var __makeRelativeRequire = function(require, mappings, pref) {
   }
 };
 require.register("initialize.js", function(exports, require, module) {
-'use strict';
+"use strict";
 
-document.addEventListener('DOMContentLoaded', function () {
-  // do your setup here
+document.addEventListener('DOMContentLoaded', function () {// do your setup here
 });
 });
 
 require.register("js/main.js", function(exports, require, module) {
-'use strict';
-//Write your stuff
+'use strict'; //Write your stuff
 //Add something to module.exports
 //Require it from HTML as `var main = require(`js/main.js`)`
 //Require it from another JS script as `var main = require(`./main.js`)`
@@ -169,16 +167,20 @@ require.register("js/main.js", function(exports, require, module) {
 
 "use strict";
 
-(function () /* BrowserSync-Brunch */{
+(function ()
+/* BrowserSync-Brunch */
+{
   var url = "//" + location.hostname + ":3000/browser-sync/browser-sync-client.2.1.6.js";
   var bs = document.createElement("script");
-  bs.type = "text/javascript";bs.async = true;bs.src = url;
+  bs.type = "text/javascript";
+  bs.async = true;
+  bs.src = url;
   var s = document.getElementsByTagName("script")[0];
   s.parentNode.insertBefore(bs, s);
 })();
 ;"use strict";
 
-var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 (function (f) {
   if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object" && typeof module !== "undefined") {
@@ -186,7 +188,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   } else if (typeof define === "function" && define.amd) {
     define([], f);
   } else {
-    var g;if (typeof window !== "undefined") {
+    var g;
+
+    if (typeof window !== "undefined") {
       g = window;
     } else if (typeof global !== "undefined") {
       g = global;
@@ -194,24 +198,45 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       g = self;
     } else {
       g = this;
-    }g.jade = f();
+    }
+
+    g.jade = f();
   }
 })(function () {
-  var define, module, exports;return function e(t, n, r) {
+  var define, module, exports;
+  return function e(t, n, r) {
     function s(o, u) {
       if (!n[o]) {
         if (!t[o]) {
-          var a = typeof require == "function" && require;if (!u && a) return a(o, !0);if (i) return i(o, !0);var f = new Error("Cannot find module '" + o + "'");throw f.code = "MODULE_NOT_FOUND", f;
-        }var l = n[o] = { exports: {} };t[o][0].call(l.exports, function (e) {
-          var n = t[o][1][e];return s(n ? n : e);
-        }, l, l.exports, e, t, n, r);
-      }return n[o].exports;
-    }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) {
-      s(r[o]);
-    }return s;
-  }({ 1: [function (require, module, exports) {
-      'use strict';
+          var a = typeof require == "function" && require;
+          if (!u && a) return a(o, !0);
+          if (i) return i(o, !0);
+          var f = new Error("Cannot find module '" + o + "'");
+          throw f.code = "MODULE_NOT_FOUND", f;
+        }
 
+        var l = n[o] = {
+          exports: {}
+        };
+        t[o][0].call(l.exports, function (e) {
+          var n = t[o][1][e];
+          return s(n ? n : e);
+        }, l, l.exports, e, t, n, r);
+      }
+
+      return n[o].exports;
+    }
+
+    var i = typeof require == "function" && require;
+
+    for (var o = 0; o < r.length; o++) {
+      s(r[o]);
+    }
+
+    return s;
+  }({
+    1: [function (require, module, exports) {
+      'use strict';
       /**
        * Merge two attribute objects giving precedence
        * to values in object `b`. Classes are special-cased
@@ -227,11 +252,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       exports.merge = function merge(a, b) {
         if (arguments.length === 1) {
           var attrs = a[0];
+
           for (var i = 1; i < a.length; i++) {
             attrs = merge(attrs, a[i]);
           }
+
           return attrs;
         }
+
         var ac = a['class'];
         var bc = b['class'];
 
@@ -251,7 +279,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         return a;
       };
-
       /**
        * Filter null `val`s.
        *
@@ -260,23 +287,25 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @api private
        */
 
+
       function nulls(val) {
         return val != null && val !== '';
       }
-
       /**
        * join array as classes.
        *
        * @param {*} val
        * @return {String}
        */
+
+
       exports.joinClasses = joinClasses;
+
       function joinClasses(val) {
-        return (Array.isArray(val) ? val.map(joinClasses) : val && (typeof val === "undefined" ? "undefined" : _typeof(val)) === 'object' ? Object.keys(val).filter(function (key) {
+        return (Array.isArray(val) ? val.map(joinClasses) : val && _typeof(val) === 'object' ? Object.keys(val).filter(function (key) {
           return val[key];
         }) : [val]).filter(nulls).join(' ');
       }
-
       /**
        * Render the given classes.
        *
@@ -284,8 +313,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @param {Array.<Boolean>} escaped
        * @return {String}
        */
+
+
       exports.cls = function cls(classes, escaped) {
         var buf = [];
+
         for (var i = 0; i < classes.length; i++) {
           if (escaped && escaped[i]) {
             buf.push(exports.escape(joinClasses([classes[i]])));
@@ -293,7 +325,9 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
             buf.push(joinClasses(classes[i]));
           }
         }
+
         var text = joinClasses(buf);
+
         if (text.length) {
           return ' class="' + text + '"';
         } else {
@@ -302,7 +336,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       };
 
       exports.style = function (val) {
-        if (val && (typeof val === "undefined" ? "undefined" : _typeof(val)) === 'object') {
+        if (val && _typeof(val) === 'object') {
           return Object.keys(val).map(function (style) {
             return style + ':' + val[style];
           }).join(';');
@@ -319,10 +353,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @param {Boolean} terse
        * @return {String}
        */
+
+
       exports.attr = function attr(key, val, escaped, terse) {
         if (key === 'style') {
           val = exports.style(val);
         }
+
         if ('boolean' == typeof val || null == val) {
           if (val) {
             return ' ' + (terse ? key : key + '="' + key + '"');
@@ -332,24 +369,29 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         } else if (0 == key.indexOf('data') && 'string' != typeof val) {
           if (JSON.stringify(val).indexOf('&') !== -1) {
             console.warn('Since Jade 2.0.0, ampersands (`&`) in data attributes ' + 'will be escaped to `&amp;`');
-          };
+          }
+
+          ;
+
           if (val && typeof val.toISOString === 'function') {
             console.warn('Jade will eliminate the double quotes around dates in ' + 'ISO form after 2.0.0');
           }
+
           return ' ' + key + "='" + JSON.stringify(val).replace(/'/g, '&apos;') + "'";
         } else if (escaped) {
           if (val && typeof val.toISOString === 'function') {
             console.warn('Jade will stringify dates in ISO form after 2.0.0');
           }
+
           return ' ' + key + '="' + exports.escape(val) + '"';
         } else {
           if (val && typeof val.toISOString === 'function') {
             console.warn('Jade will stringify dates in ISO form after 2.0.0');
           }
+
           return ' ' + key + '="' + val + '"';
         }
       };
-
       /**
        * Render the given attributes object.
        *
@@ -357,9 +399,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @param {Object} escaped
        * @return {String}
        */
+
+
       exports.attrs = function attrs(obj, terse) {
         var buf = [];
-
         var keys = Object.keys(obj);
 
         if (keys.length) {
@@ -379,7 +422,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
         return buf.join('');
       };
-
       /**
        * Escape the given string of `html`.
        *
@@ -387,6 +429,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
        * @return {String}
        * @api private
        */
+
 
       var jade_encode_html_rules = {
         '&': '&amp;',
@@ -401,11 +444,13 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       }
 
       exports.escape = jade_escape;
+
       function jade_escape(html) {
         var result = String(html).replace(jade_match_html, jade_encode_char);
         if (result === '' + html) return html;else return result;
-      };
+      }
 
+      ;
       /**
        * Re-throw the given `err` in context to the
        * the jade in `filename` at the given `lineno`.
@@ -418,27 +463,28 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
       exports.rethrow = function rethrow(err, filename, lineno, str) {
         if (!(err instanceof Error)) throw err;
+
         if ((typeof window != 'undefined' || !filename) && !str) {
           err.message += ' on line ' + lineno;
           throw err;
         }
+
         try {
           str = str || require('fs').readFileSync(filename, 'utf8');
         } catch (ex) {
           rethrow(err, null, lineno);
         }
+
         var context = 3,
             lines = str.split('\n'),
             start = Math.max(lineno - context, 0),
-            end = Math.min(lines.length, lineno + context);
+            end = Math.min(lines.length, lineno + context); // Error context
 
-        // Error context
         var context = lines.slice(start, end).map(function (line, i) {
           var curr = i + start + 1;
           return (curr == lineno ? '  > ' : '    ') + curr + '| ' + line;
-        }).join('\n');
+        }).join('\n'); // Alter exception message
 
-        // Alter exception message
         err.path = filename;
         err.message = (filename || 'Jade') + ':' + lineno + '\n' + context + '\n\n' + err.message;
         throw err;
@@ -448,7 +494,11 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
         this.lineno = lineno;
         this.filename = filename;
       };
-    }, { "fs": 2 }], 2: [function (require, module, exports) {}, {}] }, {}, [1])(1);
+    }, {
+      "fs": 2
+    }],
+    2: [function (require, module, exports) {}, {}]
+  }, {}, [1])(1);
 });
 
 //# sourceMappingURL=/js/app.js.map
