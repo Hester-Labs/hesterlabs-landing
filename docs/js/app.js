@@ -1,1 +1,504 @@
-function _typeof(e){return(_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e})(e)}!function(){"use strict";var e="undefined"==typeof global?self:global;if("function"!=typeof e.require){var n={},t={},r={},o={}.hasOwnProperty,i=/^\.\.?(\/|$)/,f=function(e,n){for(var t,r=[],o=(i.test(n)?e+"/"+n:n).split("/"),f=0,u=o.length;f<u;f++)t=o[f],".."===t?r.pop():"."!==t&&""!==t&&r.push(t);return r.join("/")},u=function(e){return e.split("/").slice(0,-1).join("/")},a=function(n){return function(t){var r=f(u(n),t);return e.require(r,n)}},s=function(e,n){var r=h&&h.createHot(e),o={id:e,exports:{},hot:r};return t[e]=o,n(o.exports,a(e),o),o.exports},l=function(e){return r[e]?l(r[e]):e},c=function(e,n){return l(f(u(e),n))},p=function(e,r){null==r&&(r="/");var i=l(e);if(o.call(t,i))return t[i].exports;if(o.call(n,i))return s(i,n[i]);throw new Error("Cannot find module '"+e+"' from '"+r+"'")};p.alias=function(e,n){r[n]=e};var d=/\.[^.\/]+$/,y=/\/index(\.[^\/]+)?$/,g=function(e){if(d.test(e)){var n=e.replace(d,"");o.call(r,n)&&r[n].replace(d,"")!==n+"/index"||(r[n]=e)}if(y.test(e)){var t=e.replace(y,"");o.call(r,t)||(r[t]=e)}};p.register=p.define=function(e,r){if(e&&"object"==typeof e)for(var i in e)o.call(e,i)&&p.register(i,e[i]);else n[e]=r,delete t[e],g(e)},p.list=function(){var e=[];for(var t in n)o.call(n,t)&&e.push(t);return e};var h=e._hmr&&new e._hmr(c,p,n,t);p._cache=t,p.hmr=h&&h.wrap,p.brunch=!0,e.require=p}}(),function(){"undefined"==typeof window?this:window;require.register("initialize.js",function(e,n,t){"use strict";document.addEventListener("DOMContentLoaded",function(){})}),require.register("js/main.js",function(e,n,t){"use strict"}),require.register("___globals___",function(e,n,t){})}(),require("___globals___"),function(e){if("object"===("undefined"==typeof exports?"undefined":_typeof(exports))&&"undefined"!=typeof module)module.exports=e();else if("function"==typeof define&&define.amd)define([],e);else{var n;n="undefined"!=typeof window?window:"undefined"!=typeof global?global:"undefined"!=typeof self?self:this,n.jade=e()}}(function(){return function e(n,t,r){function o(f,u){if(!t[f]){if(!n[f]){var a="function"==typeof require&&require;if(!u&&a)return a(f,!0);if(i)return i(f,!0);var s=new Error("Cannot find module '"+f+"'");throw s.code="MODULE_NOT_FOUND",s}var l=t[f]={exports:{}};n[f][0].call(l.exports,function(e){var t=n[f][1][e];return o(t?t:e)},l,l.exports,e,n,t,r)}return t[f].exports}for(var i="function"==typeof require&&require,f=0;f<r.length;f++)o(r[f]);return o}({1:[function(e,n,t){"use strict";function r(e){return null!=e&&""!==e}function o(e){return(Array.isArray(e)?e.map(o):e&&"object"===_typeof(e)?Object.keys(e).filter(function(n){return e[n]}):[e]).filter(r).join(" ")}function i(e){return u[e]||e}function f(e){var n=String(e).replace(a,i);return n===""+e?e:n}t.merge=function s(e,n){if(1===arguments.length){for(var t=e[0],o=1;o<e.length;o++)t=s(t,e[o]);return t}var i=e["class"],f=n["class"];(i||f)&&(i=i||[],f=f||[],Array.isArray(i)||(i=[i]),Array.isArray(f)||(f=[f]),e["class"]=i.concat(f).filter(r));for(var u in n)"class"!=u&&(e[u]=n[u]);return e},t.joinClasses=o,t.cls=function(e,n){for(var r=[],i=0;i<e.length;i++)n&&n[i]?r.push(t.escape(o([e[i]]))):r.push(o(e[i]));var f=o(r);return f.length?' class="'+f+'"':""},t.style=function(e){return e&&"object"===_typeof(e)?Object.keys(e).map(function(n){return n+":"+e[n]}).join(";"):e},t.attr=function(e,n,r,o){return"style"===e&&(n=t.style(n)),"boolean"==typeof n||null==n?n?" "+(o?e:e+'="'+e+'"'):"":0==e.indexOf("data")&&"string"!=typeof n?(JSON.stringify(n).indexOf("&")!==-1&&console.warn("Since Jade 2.0.0, ampersands (`&`) in data attributes will be escaped to `&amp;`"),n&&"function"==typeof n.toISOString&&console.warn("Jade will eliminate the double quotes around dates in ISO form after 2.0.0")," "+e+"='"+JSON.stringify(n).replace(/'/g,"&apos;")+"'"):r?(n&&"function"==typeof n.toISOString&&console.warn("Jade will stringify dates in ISO form after 2.0.0")," "+e+'="'+t.escape(n)+'"'):(n&&"function"==typeof n.toISOString&&console.warn("Jade will stringify dates in ISO form after 2.0.0")," "+e+'="'+n+'"')},t.attrs=function(e,n){var r=[],i=Object.keys(e);if(i.length)for(var f=0;f<i.length;++f){var u=i[f],a=e[u];"class"==u?(a=o(a))&&r.push(" "+u+'="'+a+'"'):r.push(t.attr(u,a,!1,n))}return r.join("")};var u={"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"},a=/[&<>"]/g;t.escape=f,t.rethrow=function l(n,t,r,o){if(!(n instanceof Error))throw n;if(!("undefined"==typeof window&&t||o))throw n.message+=" on line "+r,n;try{o=o||e("fs").readFileSync(t,"utf8")}catch(i){l(n,null,r)}var f=3,u=o.split("\n"),a=Math.max(r-f,0),s=Math.min(u.length,r+f),f=u.slice(a,s).map(function(e,n){var t=n+a+1;return(t==r?"  > ":"    ")+t+"| "+e}).join("\n");throw n.path=t,n.message=(t||"Jade")+":"+r+"\n"+f+"\n\n"+n.message,n},t.DebugItem=function(e,n){this.lineno=e,this.filename=n}},{fs:2}],2:[function(e,n,t){},{}]},{},[1])(1)});
+(function() {
+  'use strict';
+
+  var globals = typeof global === 'undefined' ? self : global;
+  if (typeof globals.require === 'function') return;
+
+  var modules = {};
+  var cache = {};
+  var aliases = {};
+  var has = {}.hasOwnProperty;
+
+  var expRe = /^\.\.?(\/|$)/;
+  var expand = function(root, name) {
+    var results = [], part;
+    var parts = (expRe.test(name) ? root + '/' + name : name).split('/');
+    for (var i = 0, length = parts.length; i < length; i++) {
+      part = parts[i];
+      if (part === '..') {
+        results.pop();
+      } else if (part !== '.' && part !== '') {
+        results.push(part);
+      }
+    }
+    return results.join('/');
+  };
+
+  var dirname = function(path) {
+    return path.split('/').slice(0, -1).join('/');
+  };
+
+  var localRequire = function(path) {
+    return function expanded(name) {
+      var absolute = expand(dirname(path), name);
+      return globals.require(absolute, path);
+    };
+  };
+
+  var initModule = function(name, definition) {
+    var hot = hmr && hmr.createHot(name);
+    var module = {id: name, exports: {}, hot: hot};
+    cache[name] = module;
+    definition(module.exports, localRequire(name), module);
+    return module.exports;
+  };
+
+  var expandAlias = function(name) {
+    return aliases[name] ? expandAlias(aliases[name]) : name;
+  };
+
+  var _resolve = function(name, dep) {
+    return expandAlias(expand(dirname(name), dep));
+  };
+
+  var require = function(name, loaderPath) {
+    if (loaderPath == null) loaderPath = '/';
+    var path = expandAlias(name);
+
+    if (has.call(cache, path)) return cache[path].exports;
+    if (has.call(modules, path)) return initModule(path, modules[path]);
+
+    throw new Error("Cannot find module '" + name + "' from '" + loaderPath + "'");
+  };
+
+  require.alias = function(from, to) {
+    aliases[to] = from;
+  };
+
+  var extRe = /\.[^.\/]+$/;
+  var indexRe = /\/index(\.[^\/]+)?$/;
+  var addExtensions = function(bundle) {
+    if (extRe.test(bundle)) {
+      var alias = bundle.replace(extRe, '');
+      if (!has.call(aliases, alias) || aliases[alias].replace(extRe, '') === alias + '/index') {
+        aliases[alias] = bundle;
+      }
+    }
+
+    if (indexRe.test(bundle)) {
+      var iAlias = bundle.replace(indexRe, '');
+      if (!has.call(aliases, iAlias)) {
+        aliases[iAlias] = bundle;
+      }
+    }
+  };
+
+  require.register = require.define = function(bundle, fn) {
+    if (bundle && typeof bundle === 'object') {
+      for (var key in bundle) {
+        if (has.call(bundle, key)) {
+          require.register(key, bundle[key]);
+        }
+      }
+    } else {
+      modules[bundle] = fn;
+      delete cache[bundle];
+      addExtensions(bundle);
+    }
+  };
+
+  require.list = function() {
+    var list = [];
+    for (var item in modules) {
+      if (has.call(modules, item)) {
+        list.push(item);
+      }
+    }
+    return list;
+  };
+
+  var hmr = globals._hmr && new globals._hmr(_resolve, require, modules, cache);
+  require._cache = cache;
+  require.hmr = hmr && hmr.wrap;
+  require.brunch = true;
+  globals.require = require;
+})();
+
+(function() {
+var global = typeof window === 'undefined' ? this : window;
+var __makeRelativeRequire = function(require, mappings, pref) {
+  var none = {};
+  var tryReq = function(name, pref) {
+    var val;
+    try {
+      val = require(pref + '/node_modules/' + name);
+      return val;
+    } catch (e) {
+      if (e.toString().indexOf('Cannot find module') === -1) {
+        throw e;
+      }
+
+      if (pref.indexOf('node_modules') !== -1) {
+        var s = pref.split('/');
+        var i = s.lastIndexOf('node_modules');
+        var newPref = s.slice(0, i).join('/');
+        return tryReq(name, newPref);
+      }
+    }
+    return none;
+  };
+  return function(name) {
+    if (name in mappings) name = mappings[name];
+    if (!name) return;
+    if (name[0] !== '.' && pref) {
+      var val = tryReq(name, pref);
+      if (val !== none) return val;
+    }
+    return require(name);
+  }
+};
+require.register("initialize.js", function(exports, require, module) {
+"use strict";
+
+document.addEventListener('DOMContentLoaded', function () {// do your setup here
+});
+});
+
+require.register("js/main.js", function(exports, require, module) {
+'use strict'; //Write your stuff
+//Add something to module.exports
+//Require it from HTML as `var main = require(`js/main.js`)`
+//Require it from another JS script as `var main = require(`./main.js`)`
+});
+
+;require.register("___globals___", function(exports, require, module) {
+  
+});})();require('___globals___');
+
+"use strict";
+
+(function ()
+/* BrowserSync-Brunch */
+{
+  var url = "//" + location.hostname + ":3000/browser-sync/browser-sync-client.2.1.6.js";
+  var bs = document.createElement("script");
+  bs.type = "text/javascript";
+  bs.async = true;
+  bs.src = url;
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(bs, s);
+})();
+;"use strict";
+
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+(function (f) {
+  if ((typeof exports === "undefined" ? "undefined" : _typeof(exports)) === "object" && typeof module !== "undefined") {
+    module.exports = f();
+  } else if (typeof define === "function" && define.amd) {
+    define([], f);
+  } else {
+    var g;
+
+    if (typeof window !== "undefined") {
+      g = window;
+    } else if (typeof global !== "undefined") {
+      g = global;
+    } else if (typeof self !== "undefined") {
+      g = self;
+    } else {
+      g = this;
+    }
+
+    g.jade = f();
+  }
+})(function () {
+  var define, module, exports;
+  return function e(t, n, r) {
+    function s(o, u) {
+      if (!n[o]) {
+        if (!t[o]) {
+          var a = typeof require == "function" && require;
+          if (!u && a) return a(o, !0);
+          if (i) return i(o, !0);
+          var f = new Error("Cannot find module '" + o + "'");
+          throw f.code = "MODULE_NOT_FOUND", f;
+        }
+
+        var l = n[o] = {
+          exports: {}
+        };
+        t[o][0].call(l.exports, function (e) {
+          var n = t[o][1][e];
+          return s(n ? n : e);
+        }, l, l.exports, e, t, n, r);
+      }
+
+      return n[o].exports;
+    }
+
+    var i = typeof require == "function" && require;
+
+    for (var o = 0; o < r.length; o++) {
+      s(r[o]);
+    }
+
+    return s;
+  }({
+    1: [function (require, module, exports) {
+      'use strict';
+      /**
+       * Merge two attribute objects giving precedence
+       * to values in object `b`. Classes are special-cased
+       * allowing for arrays and merging/joining appropriately
+       * resulting in a string.
+       *
+       * @param {Object} a
+       * @param {Object} b
+       * @return {Object} a
+       * @api private
+       */
+
+      exports.merge = function merge(a, b) {
+        if (arguments.length === 1) {
+          var attrs = a[0];
+
+          for (var i = 1; i < a.length; i++) {
+            attrs = merge(attrs, a[i]);
+          }
+
+          return attrs;
+        }
+
+        var ac = a['class'];
+        var bc = b['class'];
+
+        if (ac || bc) {
+          ac = ac || [];
+          bc = bc || [];
+          if (!Array.isArray(ac)) ac = [ac];
+          if (!Array.isArray(bc)) bc = [bc];
+          a['class'] = ac.concat(bc).filter(nulls);
+        }
+
+        for (var key in b) {
+          if (key != 'class') {
+            a[key] = b[key];
+          }
+        }
+
+        return a;
+      };
+      /**
+       * Filter null `val`s.
+       *
+       * @param {*} val
+       * @return {Boolean}
+       * @api private
+       */
+
+
+      function nulls(val) {
+        return val != null && val !== '';
+      }
+      /**
+       * join array as classes.
+       *
+       * @param {*} val
+       * @return {String}
+       */
+
+
+      exports.joinClasses = joinClasses;
+
+      function joinClasses(val) {
+        return (Array.isArray(val) ? val.map(joinClasses) : val && _typeof(val) === 'object' ? Object.keys(val).filter(function (key) {
+          return val[key];
+        }) : [val]).filter(nulls).join(' ');
+      }
+      /**
+       * Render the given classes.
+       *
+       * @param {Array} classes
+       * @param {Array.<Boolean>} escaped
+       * @return {String}
+       */
+
+
+      exports.cls = function cls(classes, escaped) {
+        var buf = [];
+
+        for (var i = 0; i < classes.length; i++) {
+          if (escaped && escaped[i]) {
+            buf.push(exports.escape(joinClasses([classes[i]])));
+          } else {
+            buf.push(joinClasses(classes[i]));
+          }
+        }
+
+        var text = joinClasses(buf);
+
+        if (text.length) {
+          return ' class="' + text + '"';
+        } else {
+          return '';
+        }
+      };
+
+      exports.style = function (val) {
+        if (val && _typeof(val) === 'object') {
+          return Object.keys(val).map(function (style) {
+            return style + ':' + val[style];
+          }).join(';');
+        } else {
+          return val;
+        }
+      };
+      /**
+       * Render the given attribute.
+       *
+       * @param {String} key
+       * @param {String} val
+       * @param {Boolean} escaped
+       * @param {Boolean} terse
+       * @return {String}
+       */
+
+
+      exports.attr = function attr(key, val, escaped, terse) {
+        if (key === 'style') {
+          val = exports.style(val);
+        }
+
+        if ('boolean' == typeof val || null == val) {
+          if (val) {
+            return ' ' + (terse ? key : key + '="' + key + '"');
+          } else {
+            return '';
+          }
+        } else if (0 == key.indexOf('data') && 'string' != typeof val) {
+          if (JSON.stringify(val).indexOf('&') !== -1) {
+            console.warn('Since Jade 2.0.0, ampersands (`&`) in data attributes ' + 'will be escaped to `&amp;`');
+          }
+
+          ;
+
+          if (val && typeof val.toISOString === 'function') {
+            console.warn('Jade will eliminate the double quotes around dates in ' + 'ISO form after 2.0.0');
+          }
+
+          return ' ' + key + "='" + JSON.stringify(val).replace(/'/g, '&apos;') + "'";
+        } else if (escaped) {
+          if (val && typeof val.toISOString === 'function') {
+            console.warn('Jade will stringify dates in ISO form after 2.0.0');
+          }
+
+          return ' ' + key + '="' + exports.escape(val) + '"';
+        } else {
+          if (val && typeof val.toISOString === 'function') {
+            console.warn('Jade will stringify dates in ISO form after 2.0.0');
+          }
+
+          return ' ' + key + '="' + val + '"';
+        }
+      };
+      /**
+       * Render the given attributes object.
+       *
+       * @param {Object} obj
+       * @param {Object} escaped
+       * @return {String}
+       */
+
+
+      exports.attrs = function attrs(obj, terse) {
+        var buf = [];
+        var keys = Object.keys(obj);
+
+        if (keys.length) {
+          for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i],
+                val = obj[key];
+
+            if ('class' == key) {
+              if (val = joinClasses(val)) {
+                buf.push(' ' + key + '="' + val + '"');
+              }
+            } else {
+              buf.push(exports.attr(key, val, false, terse));
+            }
+          }
+        }
+
+        return buf.join('');
+      };
+      /**
+       * Escape the given string of `html`.
+       *
+       * @param {String} html
+       * @return {String}
+       * @api private
+       */
+
+
+      var jade_encode_html_rules = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;'
+      };
+      var jade_match_html = /[&<>"]/g;
+
+      function jade_encode_char(c) {
+        return jade_encode_html_rules[c] || c;
+      }
+
+      exports.escape = jade_escape;
+
+      function jade_escape(html) {
+        var result = String(html).replace(jade_match_html, jade_encode_char);
+        if (result === '' + html) return html;else return result;
+      }
+
+      ;
+      /**
+       * Re-throw the given `err` in context to the
+       * the jade in `filename` at the given `lineno`.
+       *
+       * @param {Error} err
+       * @param {String} filename
+       * @param {String} lineno
+       * @api private
+       */
+
+      exports.rethrow = function rethrow(err, filename, lineno, str) {
+        if (!(err instanceof Error)) throw err;
+
+        if ((typeof window != 'undefined' || !filename) && !str) {
+          err.message += ' on line ' + lineno;
+          throw err;
+        }
+
+        try {
+          str = str || require('fs').readFileSync(filename, 'utf8');
+        } catch (ex) {
+          rethrow(err, null, lineno);
+        }
+
+        var context = 3,
+            lines = str.split('\n'),
+            start = Math.max(lineno - context, 0),
+            end = Math.min(lines.length, lineno + context); // Error context
+
+        var context = lines.slice(start, end).map(function (line, i) {
+          var curr = i + start + 1;
+          return (curr == lineno ? '  > ' : '    ') + curr + '| ' + line;
+        }).join('\n'); // Alter exception message
+
+        err.path = filename;
+        err.message = (filename || 'Jade') + ':' + lineno + '\n' + context + '\n\n' + err.message;
+        throw err;
+      };
+
+      exports.DebugItem = function DebugItem(lineno, filename) {
+        this.lineno = lineno;
+        this.filename = filename;
+      };
+    }, {
+      "fs": 2
+    }],
+    2: [function (require, module, exports) {}, {}]
+  }, {}, [1])(1);
+});
+
+//# sourceMappingURL=/js/app.js.map
